@@ -1,6 +1,7 @@
 # Grab variables from the specific variable group
 variables:
 - group: 'databricks'
+- group: 'databricks_prod'
 
 trigger:
   batch: true
