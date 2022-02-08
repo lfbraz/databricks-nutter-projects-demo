@@ -6,7 +6,7 @@ trigger:
   batch: true
   branches:
     include:
-    - '*'
+    - 'master'
   paths:
     exclude:
       - README.md
@@ -20,7 +20,6 @@ pr:
   branches:
     include:
       - master
-      - releases
   paths:
     exclude:
       - README.md
@@ -30,7 +29,7 @@ stages:
 - stage: onPush
   condition: |
     and(
-      ne(variables['Build.SourceBranch'], 'refs/heads/releases'),
+      ne(variables['Build.SourceBranch'], 'refs/heads/master'),
       not(startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
     )
   jobs:
@@ -85,7 +84,7 @@ stages:
 
 - stage: onRelease
   condition: |
-    eq(variables['Build.SourceBranch'], 'refs/heads/releases')
+    eq(variables['Build.SourceBranch'], 'refs/heads/master')
   jobs:
   - job: onReleaseJob
     pool:
