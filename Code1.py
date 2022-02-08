@@ -23,4 +23,4 @@ def upper_columns(df: DataFrame, cols: list) -> DataFrame:
 
 # COMMAND ----------
 
-print('My New Feature')
+print('My New Feature 01')
